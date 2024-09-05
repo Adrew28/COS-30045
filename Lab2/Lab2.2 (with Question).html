@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="description"	content="Data Visualisation Exercise 1"/>
+	<meta name="keywords"		  content="HTML, CSS, D3"/>
+	<meta name="author"			  content="Andrew Cheah Kim Teik"/>
+	<link href= "Styles.css" 	rel="stylesheet"/>
+
+	<title>Task 2.2 HTML, CSS and D3 Demo Page</title>
+	<!--Insert description of exercise  -->
+
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+
+</head>
+
+<body>
+    <header class="index-nav">
+		<nav>
+		<ul>
+            <li><a href="HomePage.html">HomePage</a></li>
+			<li><a href="Lab2.1.html">Lab2.1</a></li>
+			<li><a href="Lab2.2.html">Lab2.2</a></li>
+			<li><a href="Lab2.3.html">Lab2.3</a></li>
+			<li><a href="Lab2.4.html">Lab2.4</a></li>
+		</ul>	 	 
+		</nav>
+	</header>
+	<h1>Drawing with Data</h1>
+	<h2>Author: Andrew Cheah Kim Teik</h2>
+
+    <div class="chart-container">
+	<script>
+		var w = 500;
+		var h = 150;    //  Move down the whole bar chart including number
+        var barPadding = 3;
+
+		//var dataset = [14, 5, 26, 23, 9];
+        var dataset = [14, 5, 26, 23, 9, 10, 20, 7, 15];
+
+		var svg = d3.select("body")
+					.append("svg")
+					.attr("width", w)
+					.attr("height", h)
+                    .attr("fill","rgb(106, 90, 205)");
+
+        svg.selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            .attr("x", function(d, i) { //(x coordinate) rectangles are 20px wide (x=0,20,40,60). So try to use 21px to see a gap between them
+               // return i * 21;
+                return i * (w/dataset.length);
+               //return i * (padding = 1)
+            })
+
+            .attr("y", function(d){
+                return h - (d*4) -20;  //The height of the bar chart
+            })      //(y coordinate) top left start from (0,0)
+
+            .attr("width", function(d){     // Width of the bar
+                return (w/dataset.length-barPadding);
+            })
+
+            .attr("height", function(d){        //height of the bar
+                return d*4;                     // bottom left start from d*4
+            });
+
+            svg.selectAll("text")
+                .data(dataset)
+                .enter()
+                .append("text")
+                .text(function(d){
+                    return d;
+                })
+                .attr("fill","black")
+                .attr("x", function(d, i){
+                    return i * (w / dataset.length) + 16;
+                })
+                .attr("y", function(d){
+                    return h -(d*4) - 5; //Move the number
+                })
+	</script>
+	</div>
+
+	<footer>COS30045 Data Visualisation<br>
+		Andrew Cheah Kim Teik	
+		Semester 2	
+	</footer>	
+
+</body>
+</html>
