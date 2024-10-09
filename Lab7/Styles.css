@@ -139,9 +139,9 @@ footer {
     }
 
     .line {
-        fill:none;
+        fill: none;
         stroke: slategrey;
-        stroke-width: 0.05;
+        stroke-width: 0.5;
     }
 
 }
