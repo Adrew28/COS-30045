@@ -27,7 +27,7 @@ function init() {
             d3.max(data, function(d) { return +d.unemployed; })
         ]);
     
-    d3.json("LGA_VIC.json").then(function(json) {
+    d3.json("https://raw.githubusercontent.com/Adrew28/COS-30045/refs/heads/main/Lab8/LGA_VIC.json").then(function(json) {
 
         // Merge the ag. data and GeoJSON
         // Loop through once for each ag. data value

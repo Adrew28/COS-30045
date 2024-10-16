@@ -18,7 +18,8 @@ function init() {
                 .attr("height", h)
                 .attr("fill", "grey");
     
-    d3.json("LGA_VIC.json").then(function(json) {
+    //d3.json("LGA_VIC.json").then(function(json) {
+        d3.json("https://raw.githubusercontent.com/Adrew28/COS-30045/refs/heads/main/Lab8/LGA_VIC.json").then(function(json) {
 
         svg.selectAll("path")
             .data(json.features)
